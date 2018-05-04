@@ -4,7 +4,8 @@ import { FormsModule }  from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { EqualValidator } from './validatorpwd.directive';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Interceptor } from './interceptor'//PASO
 
 @NgModule({
   declarations: [
@@ -13,9 +14,14 @@ import { EqualValidator } from './validatorpwd.directive';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{ 
+    provide: HTTP_INTERCEPTORS, 
+    useClass: Interceptor, 
+    multi: true 
+} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

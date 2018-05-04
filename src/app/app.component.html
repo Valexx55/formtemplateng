@@ -27,6 +27,7 @@
           Repita la misma contraseña
         </small>
     </div>
-    <button type="submit">Acceder</button>
+    <button type="submit"
+    [disabled]=!(formulario_login.valid) >Acceder</button>
   </form>
 </div>
